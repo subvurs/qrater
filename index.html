@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qrater — Interactive Quantum News Dashboard</title>
+    <meta name="description" content="Filter and explore curated quantum computing news by topic, date, and source. Subscribe for personalized updates.">
+
+    <meta property="og:title" content="Qrater — Quantum News Dashboard">
+    <meta property="og:description" content="Interactive quantum computing news filtered by your interests.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://qrater.org">
+
+    <link rel="stylesheet" href="./static/qrater/qrater.css">
+</head>
+<body>
+    <header class="qrater-header">
+        <div class="header-inner">
+            <a href="./" class="qrater-logo">Qrater</a>
+            <nav class="header-nav">
+                <a href="https://quantumcrier.com">Quantum Crier</a>
+            </nav>
+            <button class="filter-toggle" id="filter-toggle" aria-label="Toggle filters">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="5" x2="17" y2="5"/><line x1="5" y1="10" x2="15" y2="10"/><line x1="7" y1="15" x2="13" y2="15"/>
+                </svg>
+                Filters
+            </button>
+        </div>
+    </header>
+
+    <div class="qrater-app">
+        <aside class="filters-panel" id="filters-panel">
+            <div class="filter-group">
+                <h3>Topics</h3>
+                <div class="topic-checkboxes">
+                    
+                    <label class="topic-check">
+                        <input type="checkbox" class="topic-checkbox" value="hardware" checked>
+                        <span class="topic-label topic-color-hardware">Hardware</span>
+                        <span class="topic-count">734</span>
+                    </label>
+                    
+                    <label class="topic-check">
+                        <input type="checkbox" class="topic-checkbox" value="algorithms" checked>
+                        <span class="topic-label topic-color-algorithms">Algorithms</span>
+                        <span class="topic-count">377</span>
+                    </label>
+                    
+                    <label class="topic-check">
+                        <input type="checkbox" class="topic-checkbox" value="research" checked>
+                        <span class="topic-label topic-color-research">Research</span>
+                        <span class="topic-count">297</span>
+                    </label>
+                    
+                    <label class="topic-check">
+                        <input type="checkbox" class="topic-checkbox" value="simulation" checked>
+                        <span class="topic-label topic-color-simulation">Simulation</span>
+                        <span class="topic-count">293</span>
+                    </label>
+                    
+                    <label class="topic-check">
+                        <input type="checkbox" class="topic-checkbox" value="sensing" checked>
+                        <span class="topic-label topic-color-sensing">Sensing</span>
+                        <span class="topic-count">249</span>
+                    </label>
+                    
+                    <label class="topic-check">
+                        <input type="checkbox" class="topic-checkbox" value="policy" checked>
+                        <span class="topic-label topic-color-policy">Policy</span>
+                        <span class="topic-count">189</span>
+                    </label>
+                    
+                    <label class="topic-check">
+                        <input type="checkbox" class="topic-checkbox" value="industry" checked>
+                        <span class="topic-label topic-color-industry">Industry</span>
+                        <span class="topic-count">156</span>
+                    </label>
+                    
+                    <label class="topic-check">
+                        <input type="checkbox" class="topic-checkbox" value="error_correction" checked>
+                        <span class="topic-label topic-color-error_correction">Error Correction</span>
+                        <span class="topic-count">149</span>
+                    </label>
+                    
+                    <label class="topic-check">
+                        <input type="checkbox" class="topic-checkbox" value="general" checked>
+                        <span class="topic-label topic-color-general">General</span>
+                        <span class="topic-count">140</span>
+                    </label>
+                    
+                    <label class="topic-check">
+                        <input type="checkbox" class="topic-checkbox" value="cryptography" checked>
+                        <span class="topic-label topic-color-cryptography">Cryptography</span>
+                        <span class="topic-count">98</span>
+                    </label>
+                    
+                    <label class="topic-check">
+                        <input type="checkbox" class="topic-checkbox" value="machine_learning" checked>
+                        <span class="topic-label topic-color-machine_learning">Machine Learning</span>
+                        <span class="topic-count">77</span>
+                    </label>
+                    
+                </div>
+                <div class="topic-actions">
+                    <button class="btn-sm" id="select-all">Select All</button>
+                    <button class="btn-sm" id="clear-all">Clear All</button>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h3>Date Range</h3>
+                <div class="date-presets">
+                    <button class="preset-btn" data-range="today">Today</button>
+                    <button class="preset-btn" data-range="week">This Week</button>
+                    <button class="preset-btn" data-range="month">This Month</button>
+                    <button class="preset-btn active" data-range="all">All Time</button>
+                </div>
+                <div class="custom-dates">
+                    <label>From <input type="date" id="date-from"></label>
+                    <label>To <input type="date" id="date-to"></label>
+                </div>
+            </div>
+
+            <div class="filter-group">
+                <h3>Source</h3>
+                <select id="source-filter">
+                    <option value="">All Sources</option>
+                    
+                    <option value="AWS Quantum Computing Blog">AWS Quantum Computing Blog</option>
+                    
+                    <option value="Ars Technica - Science">Ars Technica - Science</option>
+                    
+                    <option value="IonQ Blog">IonQ Blog</option>
+                    
+                    <option value="MIT Technology Review">MIT Technology Review</option>
+                    
+                    <option value="Microsoft Quantum Blog">Microsoft Quantum Blog</option>
+                    
+                    <option value="Nature Physics">Nature Physics</option>
+                    
+                    <option value="New Scientist - Physics">New Scientist - Physics</option>
+                    
+                    <option value="PRX Quantum">PRX Quantum</option>
+                    
+                    <option value="Phys.org Quantum">Phys.org Quantum</option>
+                    
+                    <option value="Physics World - Quantum">Physics World - Quantum</option>
+                    
+                    <option value="Quanta Magazine">Quanta Magazine</option>
+                    
+                    <option value="Quantum Computing Report">Quantum Computing Report</option>
+                    
+                    <option value="Science Daily - Quantum">Science Daily - Quantum</option>
+                    
+                    <option value="The Quantum Insider">The Quantum Insider</option>
+                    
+                    <option value="arXiv Quantum Physics">arXiv Quantum Physics</option>
+                    
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <h3>Sort By</h3>
+                <select id="sort-by">
+                    <option value="date-desc">Newest First</option>
+                    <option value="date-asc">Oldest First</option>
+                    <option value="relevance">Relevance Score</option>
+                </select>
+            </div>
+        </aside>
+
+        <div class="main-content">
+            
+
+            <div class="results-bar">
+                <span id="results-count">1356 articles</span>
+                <span class="build-time">Updated June 19, 2026 at 10:25 UTC</span>
+            </div>
+
+            <div class="articles-grid" id="articles-grid">
+                <div class="loading-msg">Loading articles...</div>
+            </div>
+
+            
+        </div>
+    </div>
+
+    <footer class="qrater-footer">
+        <p>Powered by <a href="https://quantumcrier.com">Quantum Crier</a> &mdash; A <a href="https://subvurs.com">Subvurs</a> Project &mdash; Founded by <a href="https://markeatherly.com">Mark Eatherly</a></p>
+        <p class="footer-note">Data refreshed daily at 06:00 UTC</p>
+    </footer>
+
+    <script src="./static/qrater/qrater.js"></script>
+</body>
+</html>
